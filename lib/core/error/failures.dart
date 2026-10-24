@@ -15,10 +15,10 @@ sealed class AppFailure {
       NetworkException(:final message) => NetworkFailure(message: message),
       AppFailure failure => failure,
       _ => UnexpectedFailure(
-          message: error is Exception
-              ? error.toString()
-              : 'An unexpected error occurred: $error',
-        ),
+        message: error is Exception
+            ? error.toString()
+            : 'An unexpected error occurred: $error',
+      ),
     };
   }
 }

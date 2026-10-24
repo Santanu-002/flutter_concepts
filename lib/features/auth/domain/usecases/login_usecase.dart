@@ -5,7 +5,7 @@ import 'package:flutter_concepts/features/auth/domain/repositories/i_auth_reposi
 import 'package:fpdart/fpdart.dart';
 
 class LoginUsecase implements BaseUseCase<User, LoginParams> {
-final IAuthRepository authRepository;
+  final IAuthRepository authRepository;
   LoginUsecase({required this.authRepository});
 
   @override
@@ -15,7 +15,6 @@ final IAuthRepository authRepository;
       params.password,
     );
   }
-
 }
 
 class LoginParams {

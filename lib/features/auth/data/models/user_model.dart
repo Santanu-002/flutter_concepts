@@ -5,11 +5,7 @@ class UserModel {
   final String name;
   final String email;
 
-  const UserModel({
-    required this.uid,
-    required this.name,
-    required this.email,
-  });
+  const UserModel({required this.uid, required this.name, required this.email});
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
@@ -20,18 +16,10 @@ class UserModel {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'uid': uid,
-      'name': name,
-      'email': email,
-    };
+    return {'uid': uid, 'name': name, 'email': email};
   }
 
-  UserModel copyWith({
-    String? uid,
-    String? name,
-    String? email,
-  }) {
+  UserModel copyWith({String? uid, String? name, String? email}) {
     return UserModel(
       uid: uid ?? this.uid,
       name: name ?? this.name,
@@ -43,8 +31,6 @@ class UserModel {
   String toString() {
     return 'UserModel(uid: $uid, name: $name, email: $email)';
   }
-
-
 }
 
 extension UserModelX on UserModel {
@@ -53,10 +39,6 @@ extension UserModelX on UserModel {
   }
 
   UserModel fromEntity(User user) {
-    return UserModel(
-      uid: user.uid,
-      name: user.name,
-      email: user.email,
-    );
+    return UserModel(uid: user.uid, name: user.name, email: user.email);
   }
 }

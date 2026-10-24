@@ -1,4 +1,4 @@
-class ServerException implements Exception{
+class ServerException implements Exception {
   final String message;
 
   const ServerException({required this.message});
@@ -7,7 +7,7 @@ class ServerException implements Exception{
   String toString() => 'ServerException: $message';
 }
 
-class CacheException implements Exception{
+class CacheException implements Exception {
   final String message;
 
   const CacheException({required this.message});
@@ -16,7 +16,7 @@ class CacheException implements Exception{
   String toString() => 'CacheException: $message';
 }
 
-class NetworkException implements Exception{
+class NetworkException implements Exception {
   final String message;
 
   const NetworkException({required this.message});
@@ -24,4 +24,3 @@ class NetworkException implements Exception{
   @override
   String toString() => 'NetworkException: $message';
 }
-

@@ -5,4 +5,4 @@ abstract interface class BaseUseCase<S, P> {
   Future<Either<AppFailure, S>> call(P params);
 }
 
-class NoParams(); 
+class NoParams();
