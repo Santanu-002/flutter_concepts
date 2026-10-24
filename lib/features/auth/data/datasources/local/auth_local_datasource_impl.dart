@@ -3,47 +3,46 @@ import 'package:flutter_concepts/features/auth/data/datasources/local/i_auth_loc
 import 'package:flutter_concepts/features/auth/data/models/user_model.dart';
 
 class AuthLocalDatasourceImpl implements IAuthLocalDataSource {
-  Future<T> _perform<T>(
-    Future<T> Function() action, {
-    required String errorMessage,
-  }) async {
+  @override
+  Future<void> saveUser(UserModel user) async {
     try {
-      return await action();
-    } on CacheException {
-      rethrow;
+      await Future.delayed(const Duration(seconds: 1));
     } catch (e) {
-      throw CacheException(message: errorMessage);
+      throw const CacheException(message: 'Failed to save user');
     }
   }
 
   @override
-  Future<void> saveUser(UserModel user) => _perform(
-    () => Future.delayed(const Duration(seconds: 1)),
-    errorMessage: 'Failed to save user',
-  );
+  Future<UserModel?> getCurrentUser() async {
+    try {
+      return await Future.delayed(
+        const Duration(seconds: 1),
+        () => const UserModel(
+          uid: '123',
+          name: 'John Doe',
+          email: 'john.doe@example.com',
+        ),
+      );
+    } catch (e) {
+      throw const CacheException(message: 'Failed to get current user');
+    }
+  }
 
   @override
-  Future<UserModel?> getCurrentUser() => _perform(
-    () => Future.delayed(
-      const Duration(seconds: 1),
-      () => UserModel(
-        uid: '123',
-        name: 'John Doe',
-        email: 'john.doe@example.com',
-      ),
-    ),
-    errorMessage: 'Failed to get current user',
-  );
+  Future<bool> isLoggedIn() async {
+    try {
+      return await Future.delayed(const Duration(seconds: 1), () => true);
+    } catch (e) {
+      throw const CacheException(message: 'Failed to check login status');
+    }
+  }
 
   @override
-  Future<bool> isLoggedIn() => _perform(
-    () => Future.delayed(const Duration(seconds: 1), () => true),
-    errorMessage: 'Failed to check login status',
-  );
-
-  @override
-  Future<void> clearUser() => _perform(
-    () => Future.delayed(const Duration(seconds: 1)),
-    errorMessage: 'Failed to clear user data',
-  );
+  Future<void> clearUser() async {
+    try {
+      await Future.delayed(const Duration(seconds: 1));
+    } catch (e) {
+      throw const CacheException(message: 'Failed to clear user data');
+    }
+  }
 }

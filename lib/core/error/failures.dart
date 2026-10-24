@@ -8,7 +8,7 @@ sealed class AppFailure {
   @override
   String toString() => '$runtimeType: $message';
 
-  factory AppFailure.fromException(Object error, [StackTrace? stackTrace]) {
+  factory AppFailure.fromException(Object error) {
     return switch (error) {
       ServerException(:final message) => ServerFailure(message: message),
       CacheException(:final message) => CacheFailure(message: message),
